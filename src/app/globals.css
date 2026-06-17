@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --ento-bg: #060606;
+  --ento-fg: #F0EDE8;
+  --ento-accent: #C8FF57;
+  --ento-accent-rgb: 200, 255, 87;
+  --ento-muted: #3A3A3A;
+  --ento-muted-fg: #6E6E6E;
+  --ento-border: #181818;
+  --ento-surface: #0C0C0C;
+}
+
+@theme inline {
+  --color-background: var(--ento-bg);
+  --color-foreground: var(--ento-fg);
+  --color-accent: var(--ento-accent);
+  --color-muted: var(--ento-muted);
+  --color-border: var(--ento-border);
+  --color-surface: var(--ento-surface);
+  --font-family-display: var(--font-syne);
+  --font-family-body: var(--font-space-grotesk);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  cursor: none !important;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ento-bg);
+  color: var(--ento-fg);
+  font-family: var(--font-space-grotesk, system-ui, sans-serif);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--ento-accent);
+  color: #000000;
+}
+
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+.font-display {
+  font-family: var(--font-syne, system-ui, sans-serif);
+}
+
+.font-body {
+  font-family: var(--font-space-grotesk, system-ui, sans-serif);
+}
+
+/* ── Film Grain Overlay ─────────────────────────────────────── */
+/* Pure CSS approach: zero JS per-frame cost, runs on compositor */
+@keyframes grain {
+  0%, 100% { transform: translate(0,   0)   }
+  14%       { transform: translate(-3%, -5%) }
+  28%       { transform: translate(5%,  2%)  }
+  43%       { transform: translate(-2%, 6%)  }
+  57%       { transform: translate(6%,  -3%) }
+  71%       { transform: translate(-5%, 4%)  }
+  85%       { transform: translate(3%,  -6%) }
+}
+
+.grain-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+}
+
+.grain-inner {
+  position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  will-change: transform;
+  animation: grain 0.28s steps(1) infinite;
+  /* background-image injected once by JS */
+  background-size: 256px 256px;
+}
+
+/* ── Performance primitives ─────────────────────────────────── */
+/* GPU-promote elements with continuous animation */
+.gpu {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Section layout containment — limits reflow scope */
+main > section {
+  contain: layout;
+}
+
+/* ── Typography helpers ─────────────────────────────────────── */
+.font-display { font-family: var(--font-syne, system-ui, sans-serif); }
+.font-body    { font-family: var(--font-space-grotesk, system-ui, sans-serif); }
+
+/* Clip-path text reveal */
+@keyframes clipReveal {
+  to { clip-path: inset(0 0 0% 0); }
+}
+
+/* Accent glow */
+.accent-glow {
+  text-shadow: 0 0 60px rgba(var(--ento-accent-rgb), 0.25);
+}
+
+/* Touch devices: restore native cursor, prevent custom cursor flash */
+@media (hover: none) {
+  *, *::before, *::after { cursor: auto !important; }
+}
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 767px) {
+  main > section { overflow-x: hidden; }
+  .grain-wrap { display: none; } /* grain is imperceptible on mobile OLED, skip the composite layer */
+}
+
+/* Accessibility: cut all motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .grain-inner { animation: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
