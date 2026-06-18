@@ -55,6 +55,9 @@ export const metadata: Metadata = {
   creator: 'Shrivas',
   publisher: 'ENTØ Studio',
   category: 'technology',
+  verification: {
+    google: 'jiHJZGA6YRKwLdLXexW5a-P4p925IXQ1oVg2Ksxv_Zg',
+  },
   robots: {
     index: true,
     follow: true,
