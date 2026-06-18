@@ -11,6 +11,7 @@ const PROJECTS = [
     category: 'AI Agent · Web App',
     color: '#7B61FF',
     desc: 'An intelligent power management agent that monitors and optimises energy usage in real time — built for the UK grid.',
+    href: 'https://power-steward-ai--NOVAGAMING55.replit.app',
   },
   {
     id: 'compass',
@@ -20,6 +21,7 @@ const PROJECTS = [
     category: 'AI Assistant · Mobile Web',
     color: '#C8FF57',
     desc: 'An AI-powered companion for international students — guiding every step of the study abroad journey, from applications to settling in.',
+    href: 'https://compass.org.in',
   },
   {
     id: 'navigate',
@@ -29,6 +31,7 @@ const PROJECTS = [
     category: 'Website · AI · VR',
     color: '#00D4FF',
     desc: 'A next-gen tourism site with deep AI integration — personalised itineraries, VR destination previews, and intelligent travel planning.',
+    href: null,
   },
   {
     id: 'techonova',
@@ -38,16 +41,26 @@ const PROJECTS = [
     category: 'Event Website',
     color: '#FF6B35',
     desc: 'A bold event website built for a flagship tech conference — schedules, speaker profiles, and live session tracking.',
+    href: 'https://shrivasvm.wixstudio.com/technova',
   },
 ]
 
 function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index: number }) {
   const [hovered, setHovered] = useState(false)
 
+  const Wrapper = project.href
+    ? ({ children }: { children: React.ReactNode }) => (
+        <a href={project.href!} target="_blank" rel="noopener noreferrer" className="block">
+          {children}
+        </a>
+      )
+    : ({ children }: { children: React.ReactNode }) => <div>{children}</div>
+
   return (
+    <Wrapper>
     <m.div
       className="relative overflow-hidden"
-      style={{ background: '#0C0C0C', border: '1px solid #181818' }}
+      style={{ background: '#0C0C0C', border: '1px solid #181818', cursor: project.href ? 'pointer' : 'default' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       initial={{ opacity: 0, y: 32 }}
@@ -99,6 +112,7 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
         </div>
       </div>
     </m.div>
+    </Wrapper>
   )
 }
 
