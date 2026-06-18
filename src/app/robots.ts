@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://entostudio.com/sitemap.xml',
-    host: 'https://entostudio.com',
+    sitemap: 'https://entostudios.com/sitemap.xml',
+    host: 'https://entostudios.com',
   }
 }

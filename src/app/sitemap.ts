@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://entostudio.com'
+const BASE_URL = 'https://entostudios.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()

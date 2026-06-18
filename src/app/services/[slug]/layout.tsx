@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-const BASE_URL = 'https://entostudio.com'
+const BASE_URL = 'https://entostudios.com'
 
 const SERVICE_META: Record<string, { title: string; description: string; keywords: string[] }> = {
   'web-development': {

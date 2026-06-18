@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const BASE_URL = 'https://entostudio.com'
+const BASE_URL = 'https://entostudios.com'
 
 export const viewport: Viewport = {
   themeColor: '#060606',
