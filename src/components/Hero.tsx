@@ -76,7 +76,7 @@ export function Hero() {
   }, [rawMx, rawMy, isTouch])
 
   return (
-    <section ref={containerRef} className="relative h-[210vh]" id="hero">
+    <section ref={containerRef} className="relative h-[150vh] md:h-[210vh]" id="hero">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
 
         {/* Ambient glow — plain div, no JS */}
