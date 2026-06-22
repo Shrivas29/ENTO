@@ -1,6 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import { m, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 
 const TRAITS = [
   'Full-Stack Developer',
@@ -70,18 +71,47 @@ export function Founder() {
           </span>
         </m.div>
 
-        {/* Massive name */}
-        <div className="overflow-hidden mb-6 md:mb-10" ref={nameRef}>
-          <m.h2
-            className="font-display font-bold text-[#F0EDE8] leading-none tracking-tight"
-            style={{
-              fontSize: 'clamp(2.8rem, 14vw, 18rem)',
-              x: nameX,
-              opacity: nameOpacity,
-            }}
+        {/* Name + Photo */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-6 md:mb-10">
+          <div className="overflow-hidden" ref={nameRef}>
+            <m.h2
+              className="font-display font-bold text-[#F0EDE8] leading-none tracking-tight"
+              style={{
+                fontSize: 'clamp(2.8rem, 10vw, 14rem)',
+                x: nameX,
+                opacity: nameOpacity,
+              }}
+            >
+              SHRIVAS VM
+            </m.h2>
+          </div>
+
+          {/* Founder photo */}
+          <m.div
+            className="relative flex-shrink-0 self-start md:self-end"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            SHRIVAS
-          </m.h2>
+            <div
+              className="relative overflow-hidden"
+              style={{ width: 'clamp(140px, 18vw, 280px)', aspectRatio: '3/4' }}
+            >
+              <Image
+                src="/shrivasvm.jpg"
+                alt="SHRIVAS VM — Founder of ENTØ Studios"
+                fill
+                className="object-cover object-top grayscale contrast-110"
+                sizes="(max-width: 768px) 140px, 280px"
+                priority
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #060606 0%, transparent 40%)' }} />
+            </div>
+            {/* Corner accent */}
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r border-b border-[#C8FF57]" />
+          </m.div>
         </div>
 
         {/* Role + traits */}
