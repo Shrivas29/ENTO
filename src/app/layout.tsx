@@ -112,7 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       '@type': 'Person',
       name: 'SHRIVAS VM',
       jobTitle: 'Founder & Creative Director',
-      image: `${BASE_URL}/shrivasvm.jpg`,
+      image: `${BASE_URL}/shrivasvmm.jpg.jpeg`,
     },
     serviceType: [
       'Web Development',
