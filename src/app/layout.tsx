@@ -110,8 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     url: BASE_URL,
     founder: {
       '@type': 'Person',
-      name: 'Shrivas',
+      name: 'SHRIVAS VM',
       jobTitle: 'Founder & Creative Director',
+      image: `${BASE_URL}/shrivas.jpg`,
     },
     serviceType: [
       'Web Development',
