@@ -88,7 +88,7 @@ export function Founder() {
 
           {/* Founder photo */}
           <m.div
-            className="relative flex-shrink-0 self-start md:self-end"
+            className="relative flex-shrink-0 self-center md:self-end"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
