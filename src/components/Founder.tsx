@@ -99,10 +99,10 @@ export function Founder() {
               style={{ width: 'clamp(140px, 18vw, 280px)', aspectRatio: '3/4' }}
             >
               <Image
-                src="/shrivasvm.jpg"
+                src="/Shrivas.jpg"
                 alt="SHRIVAS VM — Founder of ENTØ Studios"
                 fill
-                className="object-cover object-top grayscale contrast-110"
+                className="object-cover object-top"
                 sizes="(max-width: 768px) 140px, 280px"
                 priority
               />
