@@ -98,14 +98,26 @@ export function Founder() {
               className="relative overflow-hidden"
               style={{ width: 'clamp(140px, 18vw, 280px)', aspectRatio: '3/4' }}
             >
-              <Image
-                src="/shrivasvmm.jpg.jpeg"
-                alt="SHRIVAS VM — Founder of ENTØ Studios"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 140px, 280px"
-                priority
-              />
+              <picture>
+                <source
+                  srcSet="/shrivas-founder-sm.webp"
+                  media="(max-width: 768px)"
+                  type="image/webp"
+                />
+                <source
+                  srcSet="/shrivas-founder.webp"
+                  media="(min-width: 769px)"
+                  type="image/webp"
+                />
+                <Image
+                  src="/shrivas-founder.webp"
+                  alt="SHRIVAS VM — Founder of ENTØ Studios"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 140px, 280px"
+                  priority
+                />
+              </picture>
               {/* Subtle overlay */}
               <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #060606 0%, transparent 40%)' }} />
             </div>
