@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 1,
+      images: [`${BASE_URL}/shrivas-founder.webp`],
     },
     ...serviceslugs.map((slug) => ({
       url: `${BASE_URL}/services/${slug}`,
